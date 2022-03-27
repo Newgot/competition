@@ -15,10 +15,10 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     if (Auth::check()) {
-        return view('master');
+        return view('home');
     }
     return redirect('login');
-});
+})->name('home');
 
 Route::group([
     'as' => 'auth.'
@@ -28,3 +28,5 @@ Route::group([
     Route::view('registration', 'auth.registration')->name('registration');
     Route::post('registration', [AuthController::class, 'registration'])->name('registration');
 });
+
+
