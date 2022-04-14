@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row mt-2 mb-2 ml-3">
         <a href="{{ route('p.add') }}" class="btn btn-success">Добавить</a>
     </div>
     <div class="container-fluid">
@@ -10,7 +10,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Названиеr</th>
+                    <th>Название</th>
                     <th></th>
                     <th></th>
                 </tr>

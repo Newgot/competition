@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
+    <div class="row mt-2 mb-2 ml-3">
         <a href="{{ route('w.add') }}" class="btn btn-success">Добавить</a>
     </div>
     <div class="container-fluid">

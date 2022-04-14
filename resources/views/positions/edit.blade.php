@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form action="{{ route('p.edit', ["id" => $position->id]) }}" method="POST" class="positions__form">
+        <form action="{{ route('p.edit', ["id" => $position->id]) }}" method="POST" class="input-form positions__form">
             @csrf
             <label for="name">
                 <p>Название</p>

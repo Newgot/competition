@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form action="{{ route('c.add') }}" method="POST" class="competences__form">
+        <form action="{{ route('c.add') }}" method="POST" class="input-form competences__form">
             @csrf
             <label for="name">
                 <p>Название</p>

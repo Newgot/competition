@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('positionBindWorker') }}" method="POST">
+    <form action="{{ route('positionBindWorker') }}" class="input-form home__form" method="POST">
         @csrf
         <select name="position_id" id="position_id">
             @foreach ($positions as $position)
@@ -13,7 +13,7 @@
                 <option value="{{ $wokrer->id }}">{{ $wokrer->lastName }} {{ $wokrer->firstName }}</option>
             @endforeach
         </select>
-        <button type="submit" class="btn btn-success">Установить</button>
+        <button type="submit" class="btn btn-success">Установить на должность</button>
     </form>
     <table class="home-table table">
         <thead>

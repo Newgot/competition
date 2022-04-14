@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form action="{{ route('w.edit', ['id' => $worker->id]) }}" method="POST" class="competences__form">
+        <form action="{{ route('w.edit', ['id' => $worker->id]) }}" method="POST" class="input-form competences__form">
             @csrf
             <label for="firstName">
                 <p>Имя</p>
