@@ -10,6 +10,7 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     @yield('third_party_stylesheets')
 
@@ -52,7 +53,7 @@
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Sign out
                         </a>
-                        <form id="logout-form" action="{{ route('auth.login') }}" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('auth.logout') }}" method="GET" class="d-none">
                             @csrf
                         </form>
                     </li>

@@ -1,8 +1,22 @@
-.autentification {}
+.nav-menu a {
+    display: grid;
+    grid-template-columns: 25px auto;
+    grid-gap: 5px;
+}
+
+.nav-menu i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .autentification__wrapper {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+button {
+    border: none;
 }

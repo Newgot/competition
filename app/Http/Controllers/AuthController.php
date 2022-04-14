@@ -15,7 +15,6 @@ class AuthController extends Controller
         }
 
         $formFields = $request->only(['name', 'password']);
-dd($formFields);
         if (Auth::attempt($formFields)) {
             redirect('/');
         }
@@ -38,6 +37,12 @@ dd($formFields);
         if($user) {
             Auth::login($user);
         }
+        return redirect('/');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
         return redirect('/');
     }
 }

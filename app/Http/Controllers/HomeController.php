@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Position;
+use App\Models\PositionWorker;
+use App\Models\Worker;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $positions = Position::all();
+        $workers = Worker::all();
+        $positionsWorkers = PositionWorker::all();
+        foreach ($positionsWorkers as $i => $item) {
+            $positionsWorkers[$i]->position = Position::find($item->position_id);
+            $positionsWorkers[$i]->worker = Worker::find($item->worker_id);
+        }
+        return view('home', [
+            'wokrers' =>$workers,
+            'positions' =>$positions,
+            'positionsWorkers' => $positionsWorkers,
+        ]);
+    }
+
+    public function positionBindWorker(Request $request)
+    {
+        PositionWorker::create($request->all());
+        return redirect(route('home'));
     }
 }
