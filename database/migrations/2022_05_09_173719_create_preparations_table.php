@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competences_positions', function (Blueprint $table) {
+        Schema::create('preparations', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('competence_id')->unsigned()->nullable();
-            $table->bigInteger('position_id')->unsigned()->nullable();
+            $table->string('name');
+            $table->integer('code');
+            $table->bigInteger('preparation_level_id')->unsigned()->nullable();
+            $table->boolean('professorOnly');
             $table->timestamps();
             // FK
-            $table->foreign('competence_id')->references('id')->on('competences');
-            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreign('preparation_level_id')->references('id')->on('preparation_levels');
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competence_positions');
+        Schema::dropIfExists('preparations');
     }
 };

@@ -26,7 +26,6 @@ class AuthController extends Controller
         if (Auth::check()) {
             return redirect('/');
         }
-
         $validateFields = $request->validate([
             'name' => 'required',
             'email' => 'required|email',

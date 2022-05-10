@@ -13,10 +13,11 @@ class Worker extends Model
     protected $fillable = [
         'firstName',
         'lastName',
-        'dob',
+        'fatherName',
+        'dateStart',
     ];
 
-    public function getDobAttribute($key)
+    public function getDateStartAttribute($key)
     {
         return Carbon::create($key)->locale('ru')->format('d M Y');
     }

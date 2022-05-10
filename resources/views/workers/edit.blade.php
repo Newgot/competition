@@ -12,9 +12,13 @@
                 <p>Фамилия</p>
                 <input type="text" name="lastName" id="lastName" value="{{ $worker->lastName }}">
             </label>
-            <label for="dob">
-                <p>Дата рождения</p>
-                <input type="date" name="dob" id="dob" value="{{ $worker->dob }}">
+            <label for="fatherName">
+                <p>Отчество</p>
+                <input type="text" name="fatherName" id="fatherName" value="{{ $worker->fatherName }}">
+            </label>
+            <label for="dateStart">
+                <p>Начало трудовой деятельности</p>
+                <input type="date" name="dateStart" id="dateStart" value="{{ $worker->calendarDate }}">
             </label>
             <input type="hidden" name="id" value="{{ $worker->id }}">
             <button type="submit" class="btn btn-primary">Изменить</button>

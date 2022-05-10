@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkerRequest;
 use App\Models\Competence;
+use App\Models\ComptetencePreparationWorker;
 use App\Models\Worker;
 use App\Models\CompetenceWorker;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WorkerController extends Controller
@@ -35,11 +37,11 @@ class WorkerController extends Controller
     public function edit($id)
     {
         $worker = Worker::findOrFail($id);
+        $worker->calendarDate = Carbon::create($worker->dateStart)->locale('ru')->format('Y-m-d');
         if (!empty($worker)) {
-            $competencesWorker = $worker->belongsToMany(Competence::class, 'competences_workers')->get();
+            $competencesWorker = $worker->belongsToMany(Competence::class, 'comptetence_preparation_workers')->get();
             $competencesAll = Competence::all();
             $competencesEmpty = $competencesAll->diff($competencesWorker);
-
             return view('workers.edit', [
                 'worker' => $worker,
                 'competencesEmpty' => $competencesEmpty,
@@ -71,12 +73,12 @@ class WorkerController extends Controller
     {
         $worker = Worker::findOrFail($idWorker);
         $competence = Competence::findOrFail($idCompetence);
-        $competenceWorker = CompetenceWorker::where([
+        $competenceWorker = ComptetencePreparationWorker::where([
             'competence_id' => $idCompetence,
             'worker_id' => $idWorker,
         ])->get();
         if ($worker && $competence && !count($competenceWorker)) {
-            CompetenceWorker::create([
+            ComptetencePreparationWorker::create([
                 'competence_id' => $idCompetence,
                 'worker_id' => $idWorker,
             ]);

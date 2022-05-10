@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('position_workers', function (Blueprint $table) {
             $table->id();
-            $table->integer('position_id');
-            $table->integer('worker_id');
+            $table->bigInteger('position_id')->unsigned()->nullable();
+            $table->bigInteger('worker_id')->unsigned()->nullable();
             $table->timestamps();
+            // FK
+            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreign('worker_id')->references('id')->on('workers');
         });
     }
 

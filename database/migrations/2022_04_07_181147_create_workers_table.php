@@ -17,7 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('firstName');
             $table->string('lastName');
-            $table->date('dob');
+            $table->string('fatherName');
+            $table->bigInteger('academic_title_id')->unsigned()->nullable();
+            $table->bigInteger('academic_degree_id')->unsigned()->nullable();
+            $table->bigInteger('attraction_id')->unsigned()->nullable();
+            $table->bigInteger('aducation_level_id')->unsigned()->nullable();
+            $table->bigInteger('position_id')->unsigned()->nullable();
+            $table->date('dateStart');
             $table->timestamps();
         });
     }

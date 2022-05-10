@@ -11,7 +11,8 @@
                     <th>ID</th>
                     <th>Имя</th>
                     <th>Фамилия</th>
-                    <th>Дата рождения</th>
+                    <th>Отчество</th>
+                    <th>Начало трудовой деятельности</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -22,15 +23,16 @@
                         <td>{{ $worker->id }}</td>
                         <td>{{ $worker->firstName }}</td>
                         <td>{{ $worker->lastName }}</td>
-                        <td>{{ $worker->dob }}</td>
+                        <td>{{ $worker->fatherName }}</td>
+                        <td>{{ $worker->dateStart }}</td>
                         <td>
                             <a href="{{ route('w.edit', ["id" => $worker->id]) }}">
                                 <i class="fas fa-edit"></i>
                             </a>
                         </td>
                         <td>
-                            <form 
-                                action="{{ route('w.delete', ["id" => $worker->id]) }}" 
+                            <form
+                                action="{{ route('w.delete', ["id" => $worker->id]) }}"
                                 method="POST">
                                 @csrf
                                 <button type="submit">
