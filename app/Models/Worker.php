@@ -15,10 +15,17 @@ class Worker extends Model
         'lastName',
         'fatherName',
         'dateStart',
+        'academic_title_id',
+        'academic_degree_id',
+        'attraction_id',
+        'additional_aducation_id',
+        'preparation_id',
+        'aducation_level_id',
     ];
 
     public function getDateStartAttribute($key)
     {
         return Carbon::create($key)->locale('ru')->format('d M Y');
     }
+
 }

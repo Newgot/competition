@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkerRequest;
+use App\Models\AcademicDegree;
+use App\Models\AcademicTitle;
+use App\Models\AdditionalAducation;
+use App\Models\AducationLevel;
+use App\Models\Attraction;
 use App\Models\Competence;
 use App\Models\ComptetencePreparationWorker;
+use App\Models\Preparation;
 use App\Models\Worker;
 use App\Models\CompetenceWorker;
 use Carbon\Carbon;
@@ -22,9 +28,19 @@ class WorkerController extends Controller
 
     public function add()
     {
-        $competences = Competence::all();
+        $academicDegrees = AcademicDegree::all();
+        $academicTitles = AcademicTitle::all();
+        $attractions = Attraction::all();
+        $additionalAducations = AdditionalAducation::all();
+        $aducationLevels = AducationLevel::all();
+        $preparations = Preparation::all();
         return view('workers.add', [
-            'competences' => $competences,
+            'academicTitles' => $academicTitles,
+            'academicDegrees' => $academicDegrees,
+            'attractions' => $attractions,
+            'aducationLevels' => $aducationLevels,
+            'additionalAducations' => $additionalAducations,
+            'preparations' => $preparations,
         ]);
     }
 
@@ -39,13 +55,25 @@ class WorkerController extends Controller
         $worker = Worker::findOrFail($id);
         $worker->calendarDate = Carbon::create($worker->dateStart)->locale('ru')->format('Y-m-d');
         if (!empty($worker)) {
-            $competencesWorker = $worker->belongsToMany(Competence::class, 'comptetence_preparation_workers')->get();
+            $competencesWorker = $worker->belongsToMany(Competence::class, 'comptetence_workers')->get();
             $competencesAll = Competence::all();
             $competencesEmpty = $competencesAll->diff($competencesWorker);
+            $academicDegrees = AcademicDegree::all();
+            $academicTitles = AcademicTitle::all();
+            $attractions = Attraction::all();
+            $additionalAducations = AdditionalAducation::all();
+            $aducationLevels = AducationLevel::all();
+            $preparations = Preparation::all();
             return view('workers.edit', [
                 'worker' => $worker,
                 'competencesEmpty' => $competencesEmpty,
                 'competencesWorker' => $competencesWorker,
+                'academicTitles' => $academicTitles,
+                'academicDegrees' => $academicDegrees,
+                'attractions' => $attractions,
+                'aducationLevels' => $aducationLevels,
+                'additionalAducations' => $additionalAducations,
+                'preparations' => $preparations,
             ]);
         }
         return redirect(route('w.all'));
@@ -73,12 +101,12 @@ class WorkerController extends Controller
     {
         $worker = Worker::findOrFail($idWorker);
         $competence = Competence::findOrFail($idCompetence);
-        $competenceWorker = ComptetencePreparationWorker::where([
+        $competenceWorker = CompetenceWorker::where([
             'competence_id' => $idCompetence,
             'worker_id' => $idWorker,
         ])->get();
         if ($worker && $competence && !count($competenceWorker)) {
-            ComptetencePreparationWorker::create([
+            CompetenceWorker::create([
                 'competence_id' => $idCompetence,
                 'worker_id' => $idWorker,
             ]);

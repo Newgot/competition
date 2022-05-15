@@ -16,7 +16,7 @@ class AuthController extends Controller
 
         $formFields = $request->only(['name', 'password']);
         if (Auth::attempt($formFields)) {
-            redirect('/');
+            return redirect('/');
         }
         return redirect(route('auth.login'));
     }

@@ -28,7 +28,16 @@ class WorkerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'fatherName' => 'required',
+            'dateStart' => 'required',
+            'academic_title_id' => 'required',
+            'academic_degree_id' => 'required',
+            'attraction_id' => 'required',
+            'aducation_level_id' => 'required',
+            'additional_aducation_id' => 'required',
+            'preparation_id' => 'required',
         ];
     }
 }

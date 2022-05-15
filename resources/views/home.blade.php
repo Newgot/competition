@@ -17,20 +17,26 @@
     </form>
     <table class="home-table table">
         <thead>
-            <tr>
-                <th>№</th>
-                <th>Должность</th>
-                <th>Работник</th>
-            </tr>
+        <tr>
+            <th>№</th>
+            <th>Должность</th>
+            <th>Работник</th>
+            <th>Недостающие компетенции</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach ($positionsWorkers as $item)
-                <tr>
-                    <td>{{ $loop->iteration}}</td>
-                    <td>{{ $item->position->name}}</td>
-                    <td>{{ $item->worker->lastName}} {{ $item->worker->firstName}}</td>
-                </tr>
-            @endforeach
+        @foreach ($positionsWorkers as $positionsWorker)
+            <tr class="{{count($positionsWorker->missingCompetencies) ? 'missing' :''}}">
+                <td>{{ $loop->iteration}}</td>
+                <td>{{ $positionsWorker->position->name}}</td>
+                <td>{{ $positionsWorker->worker->lastName}} {{ $positionsWorker->worker->firstName}}</td>
+                <td class="missing-competence">
+                    @foreach($positionsWorker->missingCompetencies as $missingCompetence)
+                        <p>{{ $missingCompetence->name }}</p>
+                    @endforeach
+                </td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
 @endsection

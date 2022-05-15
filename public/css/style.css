@@ -51,10 +51,15 @@ button {
     justify-content: center;
 }
 
+.input-form {
+    padding: 15px;
+}
+
 .input-form input,
 .input-form select {
     padding: 6px 12px;
     border-radius: 5px;
+    border: 1px solid #000;
 }
 
 .btn-success {
@@ -75,17 +80,46 @@ button {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 300px;
+    max-width: 330px;
+}
+
+.home-table .missing {
+    background: #ff000033;;
+}
+
+.home-table .missing-competence p {
+    color: #db0000;
+    font-weight: 500;
 }
 
 .competences__form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 300px;
+    max-width: 330px;
 }
 
 .competences__form input {
     border: 1px solid #777;
     width: 100%;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 330px;
+}
+
+.input-form input,
+.input-form select {
+    width: 100%
+}
+
+.input-form label {
+    margin-bottom: 1rem;
+}
+
+.input-form p {
+    font-weight: 500;
+    margin-bottom: 0;
 }

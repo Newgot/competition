@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CompetenceWorker extends Model
 {
     use HasFactory;
-    protected $table = 'competences_workers';
+    protected $table = 'comptetence_workers';
     protected $fillable =
         [
             'worker_id',

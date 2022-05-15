@@ -22,7 +22,9 @@ return new class extends Migration
             $table->bigInteger('academic_degree_id')->unsigned()->nullable();
             $table->bigInteger('attraction_id')->unsigned()->nullable();
             $table->bigInteger('aducation_level_id')->unsigned()->nullable();
+            $table->bigInteger('additional_aducation_id')->unsigned()->nullable();
             $table->bigInteger('position_id')->unsigned()->nullable();
+            $table->bigInteger('preparation_id')->unsigned()->nullable();
             $table->date('dateStart');
             $table->timestamps();
         });

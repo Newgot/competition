@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('additional_aducations', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('worker_id')->unsigned()->nullable();
             $table->bigInteger('additional_type_id')->unsigned()->nullable();
             $table->bigInteger('document_type_id')->unsigned()->nullable();
             $table->date('dataFrom');
@@ -26,7 +25,6 @@ return new class extends Migration
             $table->date('certificateDate');
             $table->timestamps();
             // FK
-            $table->foreign('worker_id')->references('id')->on('workers');
             $table->foreign('additional_type_id')->references('id')->on('additional_types');
             $table->foreign('document_type_id')->references('id')->on('document_types');
         });

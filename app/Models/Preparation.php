@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Preparation extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'code',
+        'preparation_level_id',
+        'professorOnly',
+    ];
+
+    public function preparationLevel()
+    {
+        return $this->belongsTo(PreparationLevel::class);
+    }
 }

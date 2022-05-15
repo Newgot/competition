@@ -29,10 +29,6 @@ class HomeController extends Controller
         $positions = Position::all();
         $workers = Worker::all();
         $positionsWorkers = PositionWorker::all();
-        foreach ($positionsWorkers as $i => $item) {
-            $positionsWorkers[$i]->position = Position::find($item->position_id);
-            $positionsWorkers[$i]->worker = Worker::find($item->worker_id);
-        }
         return view('home', [
             'wokrers' =>$workers,
             'positions' =>$positions,
